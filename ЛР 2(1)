@@ -1,0 +1,20 @@
+import numpy as np
+import math
+def f(x):
+    return 3*pow(x,4) - pow(x,3) + 10*pow(x,2) - 5*x - 3
+eps = 0.0001
+
+
+def rec_dyhotomy(a,b,eps) : 
+    if abs(f(b) - f(a)) < eps:
+        print('Кореня відсутній')
+        return
+    mid = (a + b)/2
+    if f(mid) == 0 or abs(f(mid)) < eps:
+        print(f'Корінь в точці х = {mid}')
+    elif f(a)*f(mid) < 0:
+        rec_dyhotomy(a,mid,eps)
+    else:
+        rec_dyhotomy(mid,b,eps)
+
+rec_dyhotomy(0.25, 1,eps)
