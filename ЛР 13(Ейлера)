@@ -1,0 +1,25 @@
+import math 
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x,y):
+    return x+math.sin(y/math.sqrt(3))
+x0 = 1.1
+b= 2.1
+h= 0.1
+x=np.arange(x0, b + h, h)
+z=len(x)-1
+y=np.empty(z+1)
+y[0]=1.5
+
+for i in range(z):
+    y[i+1]=y[i]+f(x[i],y[i])*h
+y_rounded=np.round_(y,4)
+print("x =", x , '\ny =', y_rounded)
+plt.plot(x,y,'o',x,y,'red')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title("Метод Ейлера :")
+plt.legend(["точки", "x + sin(y/sqrt(3))"])
+plt.grid()
+plt.show()
