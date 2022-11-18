@@ -1,0 +1,11 @@
+import numpy as np
+
+a = np.matrix('3 2 1; 2 -1 1; 1 5 0')
+print('A=',a)
+b = np.matrix('5; 6; -3')
+print('B=',b)
+
+a_inv = np.linalg.inv(a)
+print(a_inv)
+x = a_inv.dot(b)
+print('X=',x)
