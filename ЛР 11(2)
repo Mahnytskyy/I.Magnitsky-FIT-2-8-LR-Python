@@ -1,0 +1,20 @@
+x = np.linspace(0.1, 1, 10)
+y = np.array(func(x))
+
+print ('x =', x)
+print ('y =', y)
+
+a = np.vstack([x, np.ones(len(x))]).T
+m,c = np.linalg.lstsq(a, y, rcond=None)[0]
+
+print('a0 = ', c)
+print('a1 = ', m)
+print('y = ', c, ' + ', m, 'x', sep = '')
+
+plt.plot(x, m*x+c, 'r', label = 'Апроксимована лінія')
+plt.plot(x, y, 'o', label = 'Задані точки')
+plt.title('М Н К')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.show()
